@@ -3,31 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 public class CityHall : MonoBehaviour 
 {
-    public static bool cityHallStressmode = true;
-    private float _stress = 0;
+    public GameObject panicAuraPrefab;
+    public LayerMask houseLayer;
+    public float auraSpeed = 8;
+    public float stressSeuil = 1;
+    public float maxAuraRadius = 10;
 
+    private float _stress = 0;
     private List<House> _attachedHouses = new List<House>();
 
-    /*
-    public void addStressByDistance(float distance)
-    {
-        distance = Mathf.Max(0, (maxDistance - distance) / attenuation);
-        stress += distance;
-    }*/
+    private GameObject _panicAura = null;
+    private float _panicAuraRadius = 1;
+    
 
     public void addStress(float stress)
     {
         _stress += stress;
-        if (_stress >= 1)
+        if (_stress >= stressSeuil && _panicAura == null)
+        {
             spawnAttachedHouses();
+            startPanicAura();
+        }
     }
 
     public void spawnAttachedHouses()
     {
+
         for (int i = 0; i < _attachedHouses.Count; ++i)
         {
             _attachedHouses[i].setStress(1);
         }
+    }
+
+    public void startPanicAura()
+    {
+        if (_panicAura == null)
+         _panicAura = GameObject.Instantiate(panicAuraPrefab, transform.position, transform.rotation) as GameObject;
     }
 
     public GUIStyle stressStyle;
@@ -40,5 +51,38 @@ public class CityHall : MonoBehaviour
     public void attachHouse(House house)
     {
         _attachedHouses.Add(house);
+    }
+
+    public void FixedUpdate()
+    {
+        if (_panicAura != null && _panicAuraRadius < maxAuraRadius)
+        {
+            _panicAuraRadius += auraSpeed * Time.deltaTime;
+            _panicAura.transform.localScale = new Vector3( _panicAuraRadius, _panicAura.transform.localScale.y, _panicAuraRadius );
+            
+            //Collider[] housesGO = Physics.OverlapSphere(transform.position, _panicAuraRadius, houseLayer);
+
+            House cHouse;
+            for (int i = 0; i < House.unspawnedHouses.Count; ++i)
+            {
+                cHouse = House.unspawnedHouses[i];
+                if (Vector3.Distance(transform.position, cHouse.transform.position) < _panicAuraRadius * 0.5f)
+                {
+                    cHouse.spawnVillager( );
+                }
+            }
+
+            Villager cVillager;
+            for (int j = 0; j < Villager.quietVillagers.Count; ++j)
+            {
+                if (Villager.quietVillagers[j] == null)
+                    continue;
+                cVillager = Villager.quietVillagers[j];
+                if (Vector3.Distance(transform.position, cVillager.transform.position) < _panicAuraRadius * 0.5f)
+                {
+                    cVillager.state = Villager.States.statue;
+                }
+            }
+        }
     }
 }

@@ -81,7 +81,7 @@ MonoBehaviour:
   villager: {fileID: 100000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6, type: 2}
   maxAttackDistance: 5
   attenuationAttack: 3
-  globalAttenuation: 80
+  globalAttenuation: 200
   maxCityHallDistance: 8
   debug: 0
   stressStyle:

@@ -10,6 +10,8 @@ public struct AttachedCityHall
 
 public class House : MonoBehaviour 
 {
+    public static List<House> unspawnedHouses = new List<House>();
+
 
     public GameObject villager;
     private List<AttachedCityHall> _attachedCityHalls = new List<AttachedCityHall>();
@@ -47,6 +49,7 @@ public class House : MonoBehaviour
                 _attachedCityHalls.Add(newHall);
             }
         }
+        unspawnedHouses.Add(this);
     }
 
     public void addStressByDistance(float distance)
@@ -59,7 +62,6 @@ public class House : MonoBehaviour
         _stress += stress;
         for (int i = 0; i < _attachedCityHalls.Count; ++i)
         {
-            Debug.Log(_attachedCityHalls[i].coef);
             _attachedCityHalls[i].cityHall.addStress(_attachedCityHalls[i].coef);
         }
         checkStress();
@@ -85,8 +87,11 @@ public class House : MonoBehaviour
         Vector3 villagerPosition = transform.position;
         villagerPosition.x += transform.localScale.x + 0.2f;
         villagerPosition.z += transform.localScale.z + 0.2f;
-        GameObject.Instantiate(villager, villagerPosition, Quaternion.identity);
+        GameObject spawnedGO = GameObject.Instantiate(villager, villagerPosition, Quaternion.identity) as GameObject;
+        Villager spawnedVillager = spawnedGO.gameObject.GetComponent<Villager>();
+        spawnedVillager.state = Villager.States.statue;
         _spawned = true;
+        unspawnedHouses.Remove(this);
     }
 
     public GUIStyle stressStyle;

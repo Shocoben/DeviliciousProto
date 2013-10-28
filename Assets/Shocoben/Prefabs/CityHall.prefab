@@ -78,6 +78,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21f31f7464ab6641bcb5d44dfcccdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panicAuraPrefab: {fileID: 100000, guid: fdcc4086db0d08443a282e0a2d771a57, type: 2}
+  houseLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  auraSpeed: 3
+  stressSeuil: 1
+  maxAuraRadius: 35
   stressStyle:
     m_Name: 
     m_Normal:
