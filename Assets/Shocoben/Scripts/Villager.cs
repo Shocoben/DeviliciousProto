@@ -132,7 +132,8 @@ public class Villager : MonoBehaviour
 	{
         active = false;
         GameObject.Destroy(this.gameObject);
-        
+        if (_statueTarget && _state == States.praying)
+            _statueTarget.removePrayer();
 	}
 
     public float prayingRunSpeed = 0.8f;
