@@ -45,7 +45,7 @@ public class CityHall : MonoBehaviour
     public void OnGUI()
     {
         Vector2 GUIPoint = GUIUtility.ScreenToGUIPoint(Camera.main.WorldToScreenPoint(transform.position));
-        GUI.Label(new Rect(GUIPoint.x, GUIPoint.y, 100, 25), "VillageStress " + _stress, stressStyle);
+        GUI.Label(new Rect(GUIPoint.x, GUIPoint.y, 100, 25), "VillageStress " + _stress.ToString("F2"), stressStyle);
     }
 
     public void attachHouse(House house)

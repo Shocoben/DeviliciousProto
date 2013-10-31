@@ -21,7 +21,9 @@ public class PlayerControls : MonoBehaviour {
 		{
 			Ray camRay= Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			
+            if (Statue.activeStatues["antithunder"].Count > 0)
+                return;
+
 			if ( Physics.Raycast(camRay,out hit, 100, villagerLayerMask.value | terrainLayerMask.value ) )
 			{
                 if (hit.transform.CompareTag("Villager"))

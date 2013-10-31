@@ -100,6 +100,6 @@ public class House : MonoBehaviour
         if (!debug)
             return;
         Vector2 GUIPoint = GUIUtility.ScreenToGUIPoint(Camera.main.WorldToScreenPoint(transform.position));
-        GUI.Label(new Rect(GUIPoint.x, GUIPoint.y, 100, 25), "HouseStress " + _stress, stressStyle);
+        GUI.Label(new Rect(GUIPoint.x, GUIPoint.y, 100, 25), "HouseStress " + _stress.ToString("F2"), stressStyle);
     }
 }
