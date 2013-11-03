@@ -16,33 +16,60 @@ public class PlayerControls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-		
-		if (Input.GetMouseButtonDown(0) )
+	  #if UNITY_STANDALONE 
+		mouseInput();
+	  #else
+		touchInput();
+	  #endif
+	}
+	
+	
+	void touchInput()
+	{
+		if (Input.touches.Length > 0)
 		{
-			Ray camRay= Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-            if (Statue.activeStatues["antithunder"].Count > 0)
-                return;
-
-			if ( Physics.Raycast(camRay,out hit, 100, villagerLayerMask.value | terrainLayerMask.value ) )
+			Touch touch = Input.GetTouch(0);
+			if (touch.phase == TouchPhase.Began)
 			{
-                if (hit.transform.CompareTag("Villager"))
-                {
-                    Villager hitted = hit.collider.gameObject.GetComponent<Villager>();
-                    hitted.onHitted(hit.point);
-                }
-                else
-                {
-                    Vector3 impactPos = hit.point;
-                    impactPos.y += 0.2f;
-                    Quaternion impactRot = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                    GameObject.Instantiate(thunderImpactPrefab, impactPos, impactRot);
-                }
-
-                impactStress(hit.point, ( hit.transform.tag == "Villager" )? 1 : missAttenuation);
+				onCastSpell(touch.position);	
 			}
 		}
 	}
+	
+	void mouseInput()
+	{
+		if (Input.GetMouseButtonDown(0) )
+		{
+			onCastSpell(Input.mousePosition);
+		}
+	}
+	
+	public void onCastSpell(Vector3 inputPos)
+	{
+		Ray camRay= Camera.main.ScreenPointToRay(inputPos);
+		RaycastHit hit;
+        if (Statue.activeStatues["antithunder"].Count > 0)
+            return;
+
+		if ( Physics.Raycast(camRay,out hit, 100, villagerLayerMask.value | terrainLayerMask.value ) )
+		{
+            if (hit.transform.CompareTag("Villager"))
+            {
+                Villager hitted = hit.collider.gameObject.GetComponent<Villager>();
+                hitted.onHitted(hit.point);
+            }
+            else
+            {
+                Vector3 impactPos = hit.point;
+                impactPos.y += 0.2f;
+                Quaternion impactRot = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                GameObject.Instantiate(thunderImpactPrefab, impactPos, impactRot);
+            }
+
+            impactStress(hit.point, ( hit.transform.tag == "Villager" )? 1 : missAttenuation);
+		}
+	}
+	
     public float panicDistance = 3;
     public void impactStress(Vector3 impactPos, float attenuation = 1)
     {
