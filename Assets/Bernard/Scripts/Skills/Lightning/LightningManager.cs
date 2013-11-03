@@ -65,35 +65,57 @@ public class LightningManager : MonoBehaviour {
 			{
 				Debug.DrawLine(ray.origin, hit.point);
 				
-				// if there is at least one object available
-				if ( objectsAvailable.Count > 0 ) {
-					Debug.Log("objects lightning available"+objectsAvailable.Count);
-					var obj = objectsAvailable[0];
-					objectsAlive.Add(obj);
-					objectsAvailable.RemoveAt(0);
-					obj.SetActive(true);
-					obj.GetComponent<Lightning>().Execute(hit.point);
-					//obj.Execute(hit.point);
-					
-					
-				} else {
-					Debug.Log("objects lightning available"+objectsAvailable.Count);
-					Debug.Log("none object available. Instantiate a new object");
-					GameObject obj = Instantiate(lightningPrefab, transform.position, transform.rotation) as GameObject;
-					obj.transform.parent = gameObject.transform;
-					objectsAlive.Add(obj);
-					obj.SetActive(true);
-					obj.GetComponent<Lightning>().Execute(hit.point);
-					//obj.Execute(hit.point);
-				}
+				Pooling(hit);
+
+
+                ObjectDecor gas = hit.transform.gameObject.GetComponent<ObjectDecor>();
+
+                Debug.Log("name " + hit.transform.gameObject.name);
+
+                if (gas != null)
+                {
+                    gas.Collision();
+                }
+                else
+                {
+                    Debug.Log("No collision with special object");
+                }
+
+                //hit.transform.gameObject.GetComponent
 				
 			}
-			
-			
-			
 			
 		}
 		
 	}
+
+    void Pooling(RaycastHit hit)
+    {
+        // if there is at least one object available
+        if (objectsAvailable.Count > 0)
+        {
+            Debug.Log("objects lightning available" + objectsAvailable.Count);
+            var obj = objectsAvailable[0];
+            objectsAlive.Add(obj);
+            objectsAvailable.RemoveAt(0);
+            obj.SetActive(true);
+            obj.GetComponent<Lightning>().Execute(hit.point);
+            //obj.Execute(hit.point);
+
+
+        }
+        else
+        {
+            Debug.Log("objects lightning available" + objectsAvailable.Count);
+            Debug.Log("none object available. Instantiate a new object");
+            GameObject obj = Instantiate(lightningPrefab, transform.position, transform.rotation) as GameObject;
+            obj.transform.parent = gameObject.transform;
+            objectsAlive.Add(obj);
+            obj.SetActive(true);
+            obj.GetComponent<Lightning>().Execute(hit.point);
+            //obj.Execute(hit.point);
+        }
+
+    }
 	
 }
