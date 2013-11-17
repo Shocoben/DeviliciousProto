@@ -82,7 +82,7 @@ MonoBehaviour:
   positionDistance: .5
   rotate: 1
   trappableVillagerStates: 0000000002000000
-  distanceTrapMove: 3
+  distanceTrapMove: 15
   distanceTrap: 2
   duration: 2
   lastTimeAlive: -1000

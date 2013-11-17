@@ -50,11 +50,12 @@ MonoBehaviour:
   eventLayers:
     serializedVersion: 2
     m_Bits: 8192
-  stressRadius: 8
-  panicDistance: 3
-  missAttenuation: 1.5
-  activateRadius: .800000012
+  stressRadius: 10
+  panicDistance: 10
+  missAttenuation: 10
+  activateRadius: 10
   name: Trap
+  distance: 100
   SPELL: '-----------------------------------'
   toInstantiateSpellCategory: Traps
 --- !u!1001 &100100000

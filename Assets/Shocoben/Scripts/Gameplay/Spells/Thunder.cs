@@ -12,6 +12,8 @@ public class Thunder : InstantDestroySpell {
         if (Statue.activeStatues["antithunder"].Count > 0)
             return;
         base.OnCast(inputPos);
+
+
     }
 
     public override void onHitStaticObject(RaycastHit hit)

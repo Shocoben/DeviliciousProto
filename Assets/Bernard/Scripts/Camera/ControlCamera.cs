@@ -15,20 +15,31 @@ public class ControlCamera : MonoBehaviour
     private float speedTouch0 = 0.0F;
     private float speedTouch1 = 0.0F;
     public float speedSwipe = 0.1F;
-    // Use this for initialization
-    void Start()
-    {
 
-    }
+    public float lastTouch;
+    public float longTouch = 5f;
+
 
     // Update is called once per frame
     void Update()
+    {
+        
+        #if UNITY_STANDALONE 
+		    MouseControls();
+        #else
+            TouchControls();
+        #endif
+        
+    }
+
+
+    public void TouchControls()
     {
         // Deplacement Camera
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            selectedCamera.transform.Translate(-touchDeltaPosition.x * speedSwipe, -touchDeltaPosition.y * speedSwipe, 0);     
+            selectedCamera.transform.Translate(-touchDeltaPosition.x * speedSwipe, -touchDeltaPosition.y * speedSwipe, 0);
         }
 
         // Zoom Camera
@@ -55,5 +66,11 @@ public class ControlCamera : MonoBehaviour
 
         }
     }
+
+    void MouseControls()
+    {
+        // TODO :)
+    }
+
 
 }
