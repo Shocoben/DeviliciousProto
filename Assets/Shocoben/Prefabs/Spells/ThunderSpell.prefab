@@ -55,12 +55,14 @@ MonoBehaviour:
   missAttenuation: 1.5
   activateRadius: .800000012
   name: Thunder
+  distance: 100
   SPELL: '-----------------------------------'
   destroyRadius: .800000012
   destroyableLayer:
     serializedVersion: 2
     m_Bits: 1024
   INSTANTDESTROYS: '-----------------------------------'
+  forbiddenTexture: {fileID: 0}
   thunderImpactPrefab: {fileID: 100000, guid: 4b2f4f2645276364aa92aeef21362efe, type: 2}
 --- !u!1001 &100100000
 Prefab:

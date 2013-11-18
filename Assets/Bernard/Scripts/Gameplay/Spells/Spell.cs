@@ -43,8 +43,6 @@ public abstract class Spell : MonoBehaviour
         Spell.PanicVillagers(hit.point, panicDistance);
     }
 
-
-
     public virtual void Setup()
     {
         _stressLayer = stressLayer.value;
