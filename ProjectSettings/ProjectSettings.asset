@@ -10,7 +10,7 @@ PlayerSettings:
   targetGlesGraphics: 1
   targetResolution: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: DeviliciousCorp
   productName: DeviliciousProto
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -69,11 +69,11 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.Company.ProductName
+  iPhoneBundleIdentifier: com.DeviliciousCorp.Devilicious
   productGUID: 887cf5f3fa9308440b9200559c19236a
   iPhoneBundleVersion: 1.0
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 14
+  AndroidMinSdkVersion: 10
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2

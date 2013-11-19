@@ -1595,6 +1595,7 @@ GameObject:
   - 136: {fileID: 286578101}
   - 23: {fileID: 286578100}
   - 114: {fileID: 286578099}
+  - 54: {fileID: 286578103}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -1679,6 +1680,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 292345865}
   m_GameObject: {fileID: 286578097}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &286578103
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 292345865}
+  m_GameObject: {fileID: 286578097}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &292345865
 Prefab:
   m_ObjectHideFlags: 0
@@ -1713,6 +1730,10 @@ Prefab:
     - target: {fileID: 400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13600000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6, type: 2}
@@ -2143,6 +2164,7 @@ GameObject:
   - 23: {fileID: 413810142}
   - 65: {fileID: 413810143}
   - 114: {fileID: 413810146}
+  - 114: {fileID: 413810147}
   m_Layer: 13
   m_Name: Water
   m_TagString: Untagged
@@ -2162,7 +2184,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ae162c0523ab4468bb03ef160eb672e2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2175,7 +2197,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 413810141}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 6.94999981, y: -1.75, z: 6.36000013}
@@ -2217,6 +2239,27 @@ MonoBehaviour:
     m_Bits: 1024
   destroyRadius: 5
   villagersInWater: []
+--- !u!114 &413810147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 413810141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d3ef1a5bbfb4e0a910fbbe5830b1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WaterMode: 2
+  m_DisablePixelLights: 1
+  m_TextureSize: 256
+  m_ClipPlaneOffset: .0700000003
+  m_ReflectLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RefractLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &420613736
 Prefab:
   m_ObjectHideFlags: 0
@@ -2269,6 +2312,7 @@ GameObject:
   - 136: {fileID: 462733430}
   - 23: {fileID: 462733429}
   - 114: {fileID: 462733428}
+  - 54: {fileID: 462733432}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -2353,6 +2397,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 477035655}
   m_GameObject: {fileID: 462733426}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &462733432
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 477035655}
+  m_GameObject: {fileID: 462733426}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &477035655
 Prefab:
   m_ObjectHideFlags: 0
@@ -2923,6 +2983,7 @@ GameObject:
   - 136: {fileID: 608695816}
   - 23: {fileID: 608695815}
   - 114: {fileID: 608695819}
+  - 54: {fileID: 608695820}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -3007,6 +3068,22 @@ MonoBehaviour:
   _state: 0
   cityHallMode: 1
   prayingRunSpeed: 1
+--- !u!54 &608695820
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 694198737}
+  m_GameObject: {fileID: 608695814}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &627340631
 Prefab:
   m_ObjectHideFlags: 0
@@ -3457,6 +3534,7 @@ GameObject:
   - 136: {fileID: 739911664}
   - 23: {fileID: 739911663}
   - 114: {fileID: 739911662}
+  - 54: {fileID: 739911666}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -3541,6 +3619,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 361156881}
   m_GameObject: {fileID: 739911660}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &739911666
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 361156881}
+  m_GameObject: {fileID: 739911660}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &787865066
 GameObject:
   m_ObjectHideFlags: 0
@@ -3553,6 +3647,7 @@ GameObject:
   - 136: {fileID: 787865070}
   - 23: {fileID: 787865069}
   - 114: {fileID: 787865068}
+  - 54: {fileID: 787865072}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -3637,6 +3732,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1189458341}
   m_GameObject: {fileID: 787865066}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &787865072
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1189458341}
+  m_GameObject: {fileID: 787865066}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &833244958
 GameObject:
   m_ObjectHideFlags: 0
@@ -3836,6 +3947,7 @@ GameObject:
   - 136: {fileID: 842634433}
   - 23: {fileID: 842634432}
   - 114: {fileID: 842634431}
+  - 54: {fileID: 842634436}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -3920,6 +4032,22 @@ Transform:
   m_LocalScale: {x: .25, y: .25, z: .25}
   m_Children: []
   m_Father: {fileID: 519479911}
+--- !u!54 &842634436
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 2012028470}
+  m_GameObject: {fileID: 842634430}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &844109349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4461,6 +4589,7 @@ GameObject:
   - 136: {fileID: 979237701}
   - 23: {fileID: 979237700}
   - 114: {fileID: 979237699}
+  - 54: {fileID: 979237704}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -4545,6 +4674,22 @@ Transform:
   m_LocalScale: {x: .25, y: .25, z: .25}
   m_Children: []
   m_Father: {fileID: 519479911}
+--- !u!54 &979237704
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 2017479650}
+  m_GameObject: {fileID: 979237698}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &980510320
 Prefab:
   m_ObjectHideFlags: 0
@@ -4638,17 +4783,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 360
     e01: 0
     e02: 0
-    e03: .5
+    e03: .784741163
     e10: 0
-    e11: 239.999985
+    e11: 360
     e12: 0
-    e13: -2768.58301
+    e13: -4153.69385
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 360
     e23: 0
     e30: 0
     e31: 0
@@ -6337,7 +6482,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634346616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.5, y: .500106752, z: 0}
+  m_LocalPosition: {x: -.784741163, y: 1.56864166, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1086832873}
@@ -6473,6 +6618,7 @@ GameObject:
   - 136: {fileID: 1702245386}
   - 23: {fileID: 1702245385}
   - 114: {fileID: 1702245384}
+  - 54: {fileID: 1702245388}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -6557,6 +6703,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1625857688}
   m_GameObject: {fileID: 1702245382}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1702245388
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1625857688}
+  m_GameObject: {fileID: 1702245382}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1704146995
 Prefab:
   m_ObjectHideFlags: 0
@@ -7114,6 +7276,7 @@ GameObject:
   - 136: {fileID: 1794469660}
   - 23: {fileID: 1794469659}
   - 114: {fileID: 1794469658}
+  - 54: {fileID: 1794469663}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -7198,6 +7361,22 @@ Transform:
   m_LocalScale: {x: .25, y: .25, z: .25}
   m_Children: []
   m_Father: {fileID: 519479911}
+--- !u!54 &1794469663
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1465248048}
+  m_GameObject: {fileID: 1794469657}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1807097518
 GameObject:
   m_ObjectHideFlags: 0
@@ -7298,6 +7477,7 @@ GameObject:
   - 136: {fileID: 1807420568}
   - 23: {fileID: 1807420567}
   - 114: {fileID: 1807420571}
+  - 54: {fileID: 1807420572}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -7382,6 +7562,22 @@ MonoBehaviour:
   _state: 0
   cityHallMode: 1
   prayingRunSpeed: 1
+--- !u!54 &1807420572
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 130922025}
+  m_GameObject: {fileID: 1807420566}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1833691305
 GameObject:
   m_ObjectHideFlags: 0
@@ -7660,7 +7856,7 @@ Transform:
   m_GameObject: {fileID: 1882091891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 11.53368, z: 0}
-  m_LocalScale: {x: .00416666688, y: .00416666688, z: .00416666688}
+  m_LocalScale: {x: .00277777785, y: .00277777785, z: .00277777785}
   m_Children:
   - {fileID: 560269609}
   m_Father: {fileID: 0}
@@ -7675,7 +7871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5ecb5660b11414fb042fb826e03b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scalingStyle: 0
+  scalingStyle: 2
   manualHeight: 720
   minimumHeight: 320
   maximumHeight: 1536
@@ -8359,6 +8555,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 13600000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6, type: 2}
   m_RootGameObject: {fileID: 842634430}
@@ -8508,6 +8708,7 @@ GameObject:
   - 136: {fileID: 2054523348}
   - 23: {fileID: 2054523347}
   - 114: {fileID: 2054523346}
+  - 54: {fileID: 2054523350}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -8592,6 +8793,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 834573792}
   m_GameObject: {fileID: 2054523344}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &2054523350
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 834573792}
+  m_GameObject: {fileID: 2054523344}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2055303719
 Prefab:
   m_ObjectHideFlags: 0
@@ -8656,6 +8873,7 @@ GameObject:
   - 136: {fileID: 2063012026}
   - 23: {fileID: 2063012025}
   - 114: {fileID: 2063012024}
+  - 54: {fileID: 2063012028}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -8740,3 +8958,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 420613736}
   m_GameObject: {fileID: 2063012022}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &2063012028
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ad7b3ac941c7fd043a7fbcf5df6a36d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 420613736}
+  m_GameObject: {fileID: 2063012022}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -12,6 +12,7 @@ GameObject:
   - 136: {fileID: 13600000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
+  - 54: {fileID: 5400000}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -55,6 +56,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5400000
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c726c9f40d4dc144858e4530237473d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolCategoryName: 
   speed: 3
   cityHallLayer:
     serializedVersion: 2
@@ -75,6 +92,7 @@ MonoBehaviour:
   villagerMask:
     serializedVersion: 2
     m_Bits: 1024
+  _state: 0
   cityHallMode: 1
   prayingRunSpeed: 1
 --- !u!136 &13600000
