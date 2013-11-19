@@ -8,6 +8,7 @@ public class InstantDestroySpell : Spell {
 
     public override void onCastWorld(RaycastHit hit)
     {
+        Debug.Log("destroyRadius" + destroyRadius);
         Collider[] colliders = Physics.OverlapSphere(hit.point, destroyRadius, destroyableLayer.value);
         for (int i = 0; i < colliders.Length; ++i)
         {

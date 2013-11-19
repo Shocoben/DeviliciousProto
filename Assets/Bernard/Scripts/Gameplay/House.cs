@@ -67,6 +67,16 @@ public class House : MonoBehaviour
         checkStress();
     }
 
+    public void Die()
+    {
+        for (int i = 0; i < _attachedCityHalls.Count; ++i)
+        {
+            _attachedCityHalls[i].cityHall.detachHouse(this);
+        }
+        unspawnedHouses.Remove(this);
+        GameObject.Destroy(this.gameObject);
+    }
+
     public void setStress(float stress)
     {
         _stress = stress;

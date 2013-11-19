@@ -169,12 +169,18 @@ public class Villager : PoolableObject
 
     public void onHitted(Vector3 source)
 	{
-        gameObject.SetActiveRecursively(false);
-        GameObject.Destroy(this.gameObject);
-        if (_statueTarget && _state == States.praying)
-            _statueTarget.removePrayer();
+        Die();
 	}
 
+    public override void Die()
+    {
+        if (_statueTarget && _state == States.praying)
+            _statueTarget.removePrayer();
+        base.Die();
+
+    }
+
+    
     public float prayingRunSpeed = 0.8f;
     public void FixedUpdate()
     {

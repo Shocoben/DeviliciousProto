@@ -8,8 +8,6 @@ public class MapEvent : MonoBehaviour {
     
     public void activate(Vector3 source, string spellName)
     {
-        Debug.Log("activate");
-
         if (canBeActivatedByAnySpell || compatibleSpells.Contains(spellName))
         {
             onActivated(source, spellName);
