@@ -53,6 +53,11 @@ public class CityHall : MonoBehaviour
         _attachedHouses.Add(house);
     }
 
+    public void detachHouse(House house)
+    {
+        _attachedHouses.Remove(house);
+    }
+
     public void FixedUpdate()
     {
         if (_panicAura != null && _panicAuraRadius < maxAuraRadius)

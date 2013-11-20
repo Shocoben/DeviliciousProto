@@ -19,15 +19,14 @@ public abstract class Spell : MonoBehaviour
     public float activateRadius = 0.8f;
     public string name = "Thunder";
 
-    public float distance = 100;
+    public float rayCastdistance = 100;
 
     public virtual void OnCast(Vector3 inputPos)
     {
         Ray camRay = Camera.main.ScreenPointToRay(inputPos);
         RaycastHit hit;
 
-
-        if (Physics.Raycast(camRay, out hit, distance, impactLayers.value))
+        if (Physics.Raycast(camRay, out hit, rayCastdistance, impactLayers.value))
         {
             onCastWorld(hit);
         }
@@ -59,6 +58,7 @@ public abstract class Spell : MonoBehaviour
             if (events[i] == null)
                 continue;
             MapEvent cEvent = events[i].GetComponent<MapEvent>();
+            Debug.Log(events[i].name);
             cEvent.activate(source, spellName);
         }
     }

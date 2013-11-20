@@ -3,8 +3,12 @@ using System.Collections;
 
 public class Thunder : InstantDestroySpell {
     public string INSTANTDESTROYS = "-----------------------------------";
+<<<<<<< HEAD
     public GameObject forbiddenTexture;
 
+=======
+   
+>>>>>>> 5188fa8cd57fea56994017667a92abbe226087a4
     //Thunder
     public GameObject thunderImpactPrefab;
     public GameObject thunderLightningPrefab;

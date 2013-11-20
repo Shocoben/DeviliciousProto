@@ -86,10 +86,10 @@ public class PoolManager : MonoBehaviour {
 
     public void addToPool(string categoryName, PoolableObject obj)
     {
-        if (pool.ContainsKey(categoryName) && categoryName.Length > 0)
+        if (pool.ContainsKey(categoryName))
             pool[categoryName].Add(obj);
         else
-            Debug.LogError("addToPool : categoryName " + categoryName + " is not in the pool");
+            Debug.LogError("addToPool : There is no categoryName " + categoryName);
 
     }
 
