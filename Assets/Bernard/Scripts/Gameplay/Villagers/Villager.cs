@@ -181,7 +181,9 @@ public class Villager : PoolableObject
         switch (_state)
         {
             case States.panic :
-                transform.Translate(_panicDirection * Time.deltaTime * speed);
+                
+                transform.Translate(_panicDirection * Time.deltaTime * speed, Space.World);
+                transform.rotation = Quaternion.LookRotation(_panicDirection);
                 if (_lastPanicTime + panicDuration < Time.time)
                 {
                     state = States.statue;
@@ -227,7 +229,8 @@ public class Villager : PoolableObject
     {
         Vector3 objectifDir = (objectif - transform.position);
         objectifDir.y = 0;
-        transform.Translate(objectifDir.normalized * Time.deltaTime * speed);
+        transform.Translate(objectifDir.normalized * Time.deltaTime * speed, Space.World);
+        transform.rotation = Quaternion.LookRotation(objectifDir);
     }
 	
 }

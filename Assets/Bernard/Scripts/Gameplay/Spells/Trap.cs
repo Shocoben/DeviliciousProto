@@ -10,11 +10,19 @@ public class Trap : InstantiedObject {
     public float distanceTrap = 0.8f;
     private List<Villager> movingToMeVillagers = new List<Villager>();
     private List<Villager> trappedVillagers = new List<Villager>();
-
+    public Color color;
+    public GameObject meshTrap;
     public float duration = 10;
     public float lastTimeAlive = -1000;
 	// Update is called once per frame
-	void FixedUpdate() 
+
+    void Awake()
+    {
+        meshTrap.gameObject.renderer.material.color = color;
+        meshTrap.gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+    }
+    
+    void FixedUpdate() 
     {
 	    Villager cVillager;
 

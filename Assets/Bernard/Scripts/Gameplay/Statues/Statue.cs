@@ -20,6 +20,16 @@ public class Statue : VillagerTarget
     private float _lastActiveStart = -1000;
     public float duration = 2;
     private bool _active = false;
+    public ParticleSystem particle;
+
+    public enum StatueState
+    {
+        None,
+        Loading,
+        ThrowSpell
+    };
+
+    public StatueState status;
 
     public override void Awake()
     {
@@ -28,7 +38,12 @@ public class Statue : VillagerTarget
         {
             activeStatues.Add(name, new List<Statue>());
         }
+
+        status = StatueState.None;
+
     }
+
+    
 
     public void removePrayer()
     {
@@ -53,6 +68,12 @@ public class Statue : VillagerTarget
             
         }
 
+        if (prayingJauge > 0 && particle.isPlaying == false )
+        {
+            particle.Play();
+        }
+        
+
         prayingJauge += nbrPrayers * prayingSpeed * Time.deltaTime;
         if (_lastActiveStart + duration < Time.time && _active)
         {
@@ -63,6 +84,7 @@ public class Statue : VillagerTarget
         {
             prayingJauge = 0;
             _active = true;
+            
             _lastActiveStart = Time.time;
             activeStatues[name].Add(this);
             return;

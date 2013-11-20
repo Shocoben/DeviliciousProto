@@ -43,7 +43,7 @@ public class PlayerControls : MonoBehaviour {
 
             if ((Time.time - lastTouch) < longTouch)
             {
-                guiText.text = "touch " + (Time.time - lastTouch);
+                //guiText.text = "touch " + (Time.time - lastTouch);
 
                 if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 {

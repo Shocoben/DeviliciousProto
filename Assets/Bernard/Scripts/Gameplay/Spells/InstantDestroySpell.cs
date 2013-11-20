@@ -16,14 +16,25 @@ public class InstantDestroySpell : Spell {
             onHitDestroyable(colliders[i].gameObject, hit);
         }
 
-        if (!hit.transform.CompareTag("Villager"))
+        if (hit.transform.CompareTag("Villager"))
         {
-            onHitStaticObject(hit);
+            OnHit(hit, true);
         }
+        else
+        {
+            OnHit(hit, false);
+        }
+        
 
         impactSociety(hit);
         Spell.ActiveNeighbourhoodsEvents(name, hit.point, activateRadius);
     }
+
+    public virtual void OnHit(RaycastHit hit, bool villagerHit)
+    {
+
+    }
+
 
     public virtual void onHitStaticObject(RaycastHit hit)
     {

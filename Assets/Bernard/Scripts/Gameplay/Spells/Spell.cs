@@ -26,6 +26,7 @@ public abstract class Spell : MonoBehaviour
         Ray camRay = Camera.main.ScreenPointToRay(inputPos);
         RaycastHit hit;
 
+
         if (Physics.Raycast(camRay, out hit, distance, impactLayers.value))
         {
             onCastWorld(hit);

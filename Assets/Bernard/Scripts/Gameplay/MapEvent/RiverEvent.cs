@@ -7,7 +7,7 @@ public class RiverEvent : MapEvent
 {
 
     public LayerMask destroyableLayer;
-    public float destroyRadius = 10;
+    public float destroyRadius = 5;
 
     public List<GameObject> villagersInWater = new List<GameObject>();
 
@@ -23,6 +23,13 @@ public class RiverEvent : MapEvent
                 Debug.Log("I am Thunder");
                 
                 Collider[] colliders = Physics.OverlapSphere(source, destroyRadius, destroyableLayer.value);
+
+                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                //sphere.collider.enabled = false;
+                //sphere.transform.position = source;
+                //sphere.transform.localScale = new Vector3(destroyRadius * 2, destroyRadius * 2, destroyRadius * 2);
+
+
                 for (int i = 0; i < colliders.Length; ++i)
                 {
                     if (colliders[i] == null)
@@ -61,11 +68,13 @@ public class RiverEvent : MapEvent
         Debug.Log("Exit");
         for (int i = 0; i <= villagersInWater.Count; i++)
         {
+            /*
             if (villagersInWater[i] == other )
             {
                 villagersInWater.RemoveAt(i);
 
             }
+            */
         }
         
         

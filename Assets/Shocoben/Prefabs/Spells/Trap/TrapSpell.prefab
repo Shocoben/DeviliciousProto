@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: ThunderSpell
+  m_Name: TrapSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a696f95abd67d642b19f1caf75f3a2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 951df931d76a74b43a7bf453bdb7e86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stressLayer:
@@ -46,24 +46,18 @@ MonoBehaviour:
     m_Bits: 1024
   impactLayers:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 10496
   eventLayers:
     serializedVersion: 2
     m_Bits: 8192
-  stressRadius: 8
-  panicDistance: 3
-  missAttenuation: 1.5
-  activateRadius: .800000012
-  name: Thunder
+  stressRadius: 10
+  panicDistance: 10
+  missAttenuation: 10
+  activateRadius: 10
+  name: Trap
   distance: 100
   SPELL: '-----------------------------------'
-  destroyRadius: .800000012
-  destroyableLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  INSTANTDESTROYS: '-----------------------------------'
-  forbiddenTexture: {fileID: 0}
-  thunderImpactPrefab: {fileID: 100000, guid: 4b2f4f2645276364aa92aeef21362efe, type: 2}
+  toInstantiateSpellCategory: Traps
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
