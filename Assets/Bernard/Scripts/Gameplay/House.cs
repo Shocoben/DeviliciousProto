@@ -94,9 +94,9 @@ public class House : MonoBehaviour
     {
         if (_spawned)
             return;
-        Vector3 villagerPosition = transform.position;
-        villagerPosition.x += transform.localScale.x + 0.2f;
-        villagerPosition.z += transform.localScale.z + 0.2f;
+        Vector3 villagerPosition = villager.transform.position;
+        villagerPosition.x = transform.position.x + 0.2f;
+        villagerPosition.z = transform.position.z + 0.2f;
         GameObject spawnedGO = GameObject.Instantiate(villager, villagerPosition, Quaternion.identity) as GameObject;
         Villager spawnedVillager = spawnedGO.gameObject.GetComponent<Villager>();
         spawnedVillager.state = Villager.States.statue;

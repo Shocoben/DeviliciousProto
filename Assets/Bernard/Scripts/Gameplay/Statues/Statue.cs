@@ -33,6 +33,7 @@ public class Statue : VillagerTarget
 
     public override void Awake()
     {
+	
  	    base.Awake();
         if (!activeStatues.ContainsKey(name))
         {
@@ -52,6 +53,8 @@ public class Statue : VillagerTarget
 
     void FixedUpdate()
     {
+		if (PlayerManager.GameStates.gameOver == PlayerManager.cState)
+			return;
         Villager cVillager;
         List<Villager> statueVillagers = Villager.villagersByState[Villager.States.statue];
 
@@ -84,17 +87,23 @@ public class Statue : VillagerTarget
         {
             prayingJauge = 0;
             _active = true;
-            
+            onActive();
             _lastActiveStart = Time.time;
             activeStatues[name].Add(this);
             return;
         }
     }
-
+	
+	
+	public virtual void onActive()
+	{
+		
+	}
+	
     public void OnGUI()
     {
         Vector2 GUIPoint = GUIUtility.ScreenToGUIPoint(Camera.main.WorldToScreenPoint(transform.position));
-        //GUI.Label(new Rect(GUIPoint.x, Screen.height - GUIPoint.y, 100, 25), "PrayingJauge " + prayingJauge.ToString("F2"), prayingStyle);
+        GUI.Label(new Rect(GUIPoint.x, Screen.height - GUIPoint.y, 100, 25), "PrayingJauge " + prayingJauge.ToString("F2"), prayingStyle);
     }
 
 }

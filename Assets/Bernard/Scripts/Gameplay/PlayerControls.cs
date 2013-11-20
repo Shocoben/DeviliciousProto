@@ -15,6 +15,8 @@ public class PlayerControls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+		if (PlayerManager.cState == PlayerManager.GameStates.gameOver)
+			return;
         if (UICamera.hoveredObject)
         {
             return;
