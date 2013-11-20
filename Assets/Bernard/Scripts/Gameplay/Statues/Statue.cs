@@ -19,7 +19,7 @@ public class Statue : VillagerTarget
     public GUIStyle prayingStyle;
     private float _lastActiveStart = -1000;
     public float duration = 2;
-    private bool _active = false;
+    public bool _active = false;
     public ParticleSystem particle;
 
     public enum StatueState
@@ -94,7 +94,7 @@ public class Statue : VillagerTarget
     public void OnGUI()
     {
         Vector2 GUIPoint = GUIUtility.ScreenToGUIPoint(Camera.main.WorldToScreenPoint(transform.position));
-        GUI.Label(new Rect(GUIPoint.x, Screen.height - GUIPoint.y, 100, 25), "PrayingJauge " + prayingJauge.ToString("F2"), prayingStyle);
+        //GUI.Label(new Rect(GUIPoint.x, Screen.height - GUIPoint.y, 100, 25), "PrayingJauge " + prayingJauge.ToString("F2"), prayingStyle);
     }
 
 }

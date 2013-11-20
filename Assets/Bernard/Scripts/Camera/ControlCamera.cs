@@ -39,7 +39,7 @@ public class ControlCamera : MonoBehaviour
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            selectedCamera.transform.Translate(-touchDeltaPosition.x * speedSwipe, -touchDeltaPosition.y * speedSwipe, 0);
+            selectedCamera.transform.Translate(-touchDeltaPosition.x * speedSwipe, 0, -touchDeltaPosition.y * speedSwipe, Space.World);
         }
 
         // Zoom Camera

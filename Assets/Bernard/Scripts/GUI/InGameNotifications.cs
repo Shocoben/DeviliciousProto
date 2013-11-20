@@ -37,7 +37,7 @@ public class InGameNotifications : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (startTime + duration < Time.time)
+        if (duration < 0 || startTime + duration < Time.time)
         {
             _texture.enabled = false;
         }

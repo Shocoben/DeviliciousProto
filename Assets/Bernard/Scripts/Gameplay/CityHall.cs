@@ -71,6 +71,8 @@ public class CityHall : MonoBehaviour
             for (int i = 0; i < House.unspawnedHouses.Count; ++i)
             {
                 cHouse = House.unspawnedHouses[i];
+                if (cHouse == null)
+                    continue;
                 if (Vector3.Distance(transform.position, cHouse.transform.position) < _panicAuraRadius * 0.5f)
                 {
                     cHouse.spawnVillager( );

@@ -11,5 +11,7 @@ EditorBuildSettings:
     path: Assets/Shocoben/shocoben.unity
   - enabled: 0
     path: Assets/Bernard/Scenes/CameraControls.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Bernard/Scenes/gameplay - water.unity
+  - enabled: 1
+    path: Assets/Bernard/Scenes/ProtoShow.unity
