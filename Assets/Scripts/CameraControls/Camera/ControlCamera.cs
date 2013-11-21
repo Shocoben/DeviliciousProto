@@ -32,7 +32,7 @@ public class ControlCamera : MonoBehaviour
         
     }
 
-
+    
     public void TouchControls()
     {
         // Deplacement Camera

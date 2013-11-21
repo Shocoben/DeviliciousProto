@@ -4,14 +4,28 @@ using System.Collections.Generic;
 public class PlayerControls : MonoBehaviour {
 
     private bool fingerMoving = false;
-    private float lastTouch;
-    private float longTouch = 0.100f;
+    private float lastInputTime;
+    private Vector2 lastInputPosition;
+    public float distanceCameraActive = 0.5f;
+
+    public float inputCastSpellTime = 0.2f;
+    private bool movingCamera = false;
+
+    public float cameraSpeed = 5;
 
     public GUIText guiText;
+    public float varianceInDistances = 5.0F;
+    public float minPinchSpeed = 5.0F;
+    public float pinchSpeed = 4;
 
+    private float prevDist = 0;
+    private bool alreadyPinched = false;
+
+    public float scrollSpeed = 10;
     public ControlCamera controlCamera;
 
-
+    public float minFOV = 15;
+    public float maxFOV = 90;
 	// Update is called once per frame
 	void Update () 
     {
@@ -22,126 +36,132 @@ public class PlayerControls : MonoBehaviour {
             return;
         }
 
-        #if UNITY_EDITOR
+        #if UNITY_STANDALONE || UNITY_EDITOR
             mouseInput();
+            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * scrollSpeed, minFOV, maxFOV);
         #endif
 
-        #if UNITY_IPHONE || UNITY_ANDROID
+        #if UNITY_IPHONE || UNITY_ANDROID && !UNITY_EDITOR
               touchInput();
         #endif
 
     }
-	
-	
+
+
 	void touchInput()
     {
-        if (Input.touches.Length > 0)
+        float deltaTimeForLastInput = Time.time - lastInputTime;
+        if (Input.touchCount > 0)
         {
-            // 
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.touchCount < 2)
             {
-                lastTouch = Time.time;
-            }
-
-            if ((Time.time - lastTouch) < longTouch)
-            {
-                //guiText.text = "touch " + (Time.time - lastTouch);
-
-                if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                
+                if (Input.touches[0].phase == TouchPhase.Began)
                 {
-                    onCastSpell(Input.GetTouch(0).position);
+                    lastInputPosition = Input.touches[0].position;
+                    lastInputTime = Time.time;
+                    movingCamera = false;
+                    alreadyPinched = false;
                 }
-            }
-        }
-
-
-
-
-        /*
-        // The player hit the screen
-        if (Input.touches.Length > 0)
-        {
-            // The player moved his finger on the screen. He tries to move the camera
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                lastTouch = Time.time;
-            }
-
-            if ((Time.time - lastTouch) < longTouch)
-            {
-                guiText.text = "touch " + (Time.time - lastTouch);
-
-
-                if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                else if (Input.touches[0].phase == TouchPhase.Ended)
                 {
-                    onCastSpell(Input.GetTouch(0).position);
+                    if (!movingCamera && deltaTimeForLastInput < inputCastSpellTime)
+                    {
+                        onCastSpell(Input.mousePosition);
+                    }
+                    movingCamera = false;
+                    alreadyPinched = false;
                 }
-
+                else if (Input.touches[0].phase != TouchPhase.Canceled)
+                {
+                    if (!movingCamera)
+                    {
+                        if (Vector2.Distance(Input.touches[0].position, lastInputPosition) > distanceCameraActive)
+                        {
+                            movingCamera = true;
+                        }
+                    }
+                    else
+                    {
+                        moveCamera(Input.touches[0].deltaPosition);
+                        lastInputPosition = Input.touches[0].position;
+                    }
+                }
             }
             else
             {
-                guiText.text = "long touch " + (Time.time - lastTouch);
-                controlCamera.TouchControls();
-                
-            }
+                movingCamera = true;
 
-        }*/
-         
-         
-        /*
-        // The player hit the screen
-        if (Input.touches.Length > 0)
-        {
-            // The player moved his finger on the screen. He tries to move the camera
-            if (Input.GetTouch(0).phase == TouchPhase.Moved)
-            {
-                fingerMoving = true;
-            }
+                float curDist = Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position); //current distance between finger touches
+                float touchDelta = curDist - prevDist;
+                prevDist = curDist;
 
-            // User lift his finger
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                // The player lift his finger without moved it. He tried to launch a spell
-                if (Input.GetTouch(0).phase == TouchPhase.Ended && fingerMoving == false)
-                {
-                    onCastSpell(Input.GetTouch(0).position);
-
-                }
-
-                fingerMoving = false;
-            }
-
-        }
-       */
-        /*
-        // The player hit the screen
-        if (Input.touches.Length > 0)
-        {
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                onCastSpell(Input.GetTouch(0).position);
+                if (alreadyPinched)
+                    Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView + touchDelta * Time.deltaTime * pinchSpeed, minFOV, maxFOV);
+                alreadyPinched = true;
 
             }
         }
-        */
+        else
+        {
+            alreadyPinched = false;
+            movingCamera = false;
+        }
 
 	}
-	
+
 	void mouseInput()
 	{
+       
+        Vector2 inputPos2D = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        float deltaTimeForLastInput = Time.time - lastInputTime;
 		if (Input.GetMouseButtonDown(0) )
 		{
-			onCastSpell(Input.mousePosition);
+            lastInputTime = Time.time;
+            lastInputPosition = inputPos2D;
 		}
+        else if (Input.GetMouseButton(0))
+        {
+            
+            if (!movingCamera)
+            {
+                if (Vector2.Distance(inputPos2D, lastInputPosition) > distanceCameraActive)
+                {
+                    movingCamera = true;
+                }
+            }
+            else
+            {
+                
+                Vector2 dPos = inputPos2D - lastInputPosition;
+                moveCamera(dPos);
+                lastInputPosition = inputPos2D;
+            }
+            
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (!movingCamera && deltaTimeForLastInput < inputCastSpellTime)
+            {
+                onCastSpell(Input.mousePosition);
+            }
+            movingCamera = false;
+        }
 	}
 	
 	public void onCastSpell(Vector3 inputPos)
 	{
         SpellManager.instance.castCSpell(inputPos);
-
 	}
-	
 
+    public void moveCamera(Vector2 diff)
+    {
+        Vector3 toMove = new Vector3(diff.x,0,diff.y);
+        float reducField =  Camera.main.fieldOfView / maxFOV ;
+        Debug.Log(Camera.main.fieldOfView + " maxFov " + maxFOV );
+        Camera.main.transform.Translate(toMove.normalized * cameraSpeed * reducField, Space.World);
+    }
 
 
 }

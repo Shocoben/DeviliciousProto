@@ -40,13 +40,14 @@ public class CityHall : MonoBehaviour
         if (_panicAura == null)
          _panicAura = GameObject.Instantiate(panicAuraPrefab, transform.position, transform.rotation) as GameObject;
     }
-
+    /*
     public GUIStyle stressStyle;
+    
     public void OnGUI()
     {
         Vector2 GUIPoint = GUIUtility.ScreenToGUIPoint(Camera.main.WorldToScreenPoint(transform.position));
         GUI.Label(new Rect(GUIPoint.x, GUIPoint.y, 100, 25), "VillageStress " + _stress.ToString("F2"), stressStyle);
-    }
+    }*/
 
     public void attachHouse(House house)
     {

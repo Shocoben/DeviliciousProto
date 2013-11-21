@@ -107,9 +107,11 @@ public class House : MonoBehaviour
     public GUIStyle stressStyle;
     public void OnGUI()
     {
+        /*
         if (!debug)
             return;
         Vector2 GUIPoint = GUIUtility.ScreenToGUIPoint(Camera.main.WorldToScreenPoint(transform.position));
         GUI.Label(new Rect(GUIPoint.x, GUIPoint.y, 100, 25), "HouseStress " + _stress.ToString("F2"), stressStyle);
+         * */
     }
 }
