@@ -83,7 +83,7 @@ public class PlayerControls : MonoBehaviour {
                     }
                     else
                     {
-                        moveCamera(Input.touches[0].deltaPosition);
+                        moveCamera(-Input.touches[0].deltaPosition);
                         lastInputPosition = Input.touches[0].position;
                     }
                 }
@@ -97,7 +97,7 @@ public class PlayerControls : MonoBehaviour {
                 prevDist = curDist;
 
                 if (alreadyPinched)
-                    Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView + touchDelta * Time.deltaTime * pinchSpeed, minFOV, maxFOV);
+                    Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - touchDelta * Time.deltaTime * pinchSpeed, minFOV, maxFOV);
                 alreadyPinched = true;
 
             }
@@ -134,11 +134,13 @@ public class PlayerControls : MonoBehaviour {
             {
                 
                 Vector2 dPos = inputPos2D - lastInputPosition;
-                moveCamera(dPos);
+                moveCamera(-dPos);
                 lastInputPosition = inputPos2D;
             }
             
         }
+
+
 
         if (Input.GetMouseButtonUp(0))
         {

@@ -180,7 +180,7 @@ MonoBehaviour:
   distanceTrap: 2
   color: {r: .863285899, g: .875, b: .0257353187, a: 0}
   meshTrap: {fileID: 100004}
-  duration: 2
+  duration: 7
   lastTimeAlive: -1000
 --- !u!1001 &100100000
 Prefab:

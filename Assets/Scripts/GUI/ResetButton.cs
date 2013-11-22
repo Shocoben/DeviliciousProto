@@ -9,6 +9,7 @@ public class ResetButton : MonoBehaviour {
 		Time.timeScale = 1;
 		PlayerManager.cState = PlayerManager.GameStates.playing;
 		InGameNotifications.clear();
+        Statue.activeStatues.Clear();
     }
 }
 
